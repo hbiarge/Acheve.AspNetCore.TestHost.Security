@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
-using Microsoft.AspNet.Authentication;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Options;
 
-namespace Acheve.AspNet.TestHost.Security
+namespace Acheve.AspNetCore.TestHost.Security
 {
     public class TestServerAuthenticationOptions : AuthenticationOptions, IOptions<TestServerAuthenticationOptions>
     {

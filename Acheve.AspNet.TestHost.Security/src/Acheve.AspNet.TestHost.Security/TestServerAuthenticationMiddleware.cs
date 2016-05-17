@@ -1,19 +1,19 @@
-﻿using Microsoft.AspNet.Authentication;
-using Microsoft.AspNet.Builder;
+﻿using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.WebEncoders;
+using Microsoft.Extensions.Options;
 
-namespace Acheve.AspNet.TestHost.Security
+namespace Acheve.AspNetCore.TestHost.Security
 {
     public class TestServerAuthenticationMiddleware
         : AuthenticationMiddleware<TestServerAuthenticationOptions>
     {
         public TestServerAuthenticationMiddleware(
             RequestDelegate next,
-            TestServerAuthenticationOptions options,
-            ILoggerFactory
-            loggerFactory,
-            IUrlEncoder encoder)
+            IOptions<TestServerAuthenticationOptions> options,
+            ILoggerFactory loggerFactory,
+            UrlEncoder encoder)
             : base(next, options, loggerFactory, encoder)
         {
         }

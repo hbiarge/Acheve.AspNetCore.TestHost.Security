@@ -1,12 +1,12 @@
-﻿using System.Linq;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Authentication;
-using Microsoft.AspNet.Http.Authentication;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.Extensions.Primitives;
+using System.Linq;
 
-namespace Acheve.AspNet.TestHost.Security
+namespace Acheve.AspNetCore.TestHost.Security
 {
     public class TestServerAuthenticationHandler : AuthenticationHandler<TestServerAuthenticationOptions>
     {
@@ -18,7 +18,7 @@ namespace Acheve.AspNet.TestHost.Security
 
             if (existAuthorizationHeader == false)
             {
-                return Task.FromResult(AuthenticateResult.Failed("No Authorization header present"));
+                return Task.FromResult(AuthenticateResult.Fail("No Authorization header present"));
             }
 
             AuthenticationHeaderValue authHeader;
@@ -26,7 +26,7 @@ namespace Acheve.AspNet.TestHost.Security
 
             if (canParse == false || authHeader.Scheme != TestServerAuthenticationDefaults.AuthenticationScheme)
             {
-                return Task.FromResult(AuthenticateResult.Failed("Authorization header not valid"));
+                return Task.FromResult(AuthenticateResult.Fail("Authorization header not valid"));
             }
 
             var headerClaims = DefautClaimsEncoder.Decode(authHeader.Parameter);

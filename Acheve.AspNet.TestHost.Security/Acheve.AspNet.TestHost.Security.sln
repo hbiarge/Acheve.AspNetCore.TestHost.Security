@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0F882837-34A3-45A6-B3C4-9EB39FD6298D}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Acheve.AspNet.TestHost.Security", "src\Acheve.AspNet.TestHost.Security\Acheve.AspNet.TestHost.Security.xproj", "{4F80D5A6-BD08-4C10-8A04-36E355E98631}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Acheve.AspNetCore.TestHost.Security", "src\Acheve.AspNet.TestHost.Security\Acheve.AspNetCore.TestHost.Security.xproj", "{4F80D5A6-BD08-4C10-8A04-36E355E98631}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

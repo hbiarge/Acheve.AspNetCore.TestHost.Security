@@ -1,4 +1,4 @@
-﻿namespace Acheve.AspNet.TestHost.Security
+﻿namespace Acheve.AspNetCore.TestHost.Security
 {
     public static class TestServerAuthenticationDefaults
     {

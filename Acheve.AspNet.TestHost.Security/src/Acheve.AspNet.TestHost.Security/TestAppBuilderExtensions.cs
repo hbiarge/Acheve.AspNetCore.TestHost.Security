@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNetCore.Builder;
+using System;
 
-namespace Acheve.AspNet.TestHost.Security
+namespace Acheve.AspNetCore.TestHost.Security
 {
     public static class TestAppBuilderExtensions
     {

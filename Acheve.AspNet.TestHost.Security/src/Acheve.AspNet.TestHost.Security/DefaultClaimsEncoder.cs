@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
-namespace Acheve.AspNet.TestHost.Security
+namespace Acheve.AspNetCore.TestHost.Security
 {
     internal static class DefautClaimsEncoder
     {

@@ -2,9 +2,9 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
-using Microsoft.AspNet.TestHost;
+using Microsoft.AspNetCore.TestHost;
 
-namespace Acheve.AspNet.TestHost.Security
+namespace Acheve.AspNetCore.TestHost.Security
 {
     public static class TestServerAuthenticationExtensions
     {
