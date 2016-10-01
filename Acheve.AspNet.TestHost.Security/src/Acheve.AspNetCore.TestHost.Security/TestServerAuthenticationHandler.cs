@@ -37,7 +37,7 @@ namespace Acheve.AspNetCore.TestHost.Security
             var ticket = new AuthenticationTicket(
                 new ClaimsPrincipal(identity),
                 new AuthenticationProperties(),
-                TestServerAuthenticationDefaults.AuthenticationScheme);
+                Options.AuthenticationScheme);
 
             return Task.FromResult(AuthenticateResult.Success(ticket));
         }
