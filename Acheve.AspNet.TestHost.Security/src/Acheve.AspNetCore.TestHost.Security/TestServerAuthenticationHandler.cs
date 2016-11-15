@@ -31,8 +31,10 @@ namespace Acheve.AspNetCore.TestHost.Security
 
             var headerClaims = DefautClaimsEncoder.Decode(authHeader.Parameter);
             var identity = new ClaimsIdentity(
-                Options.CommonClaims.Union(headerClaims),
-                Options.AuthenticationScheme);
+                claims: Options.CommonClaims.Union(headerClaims),
+                authenticationType: Options.AuthenticationScheme,
+                nameType: Options.NameClaimType,
+                roleType: Options.RoleClaimType);
 
             var ticket = new AuthenticationTicket(
                 new ClaimsPrincipal(identity),
