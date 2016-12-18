@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.1.1",
+  "version": "1.0.0-*",
   "description": "Acheve.AspNetCore.TestHost.Security Class Library",
   "authors": [ "Hugo Biarge" ],
 
@@ -23,6 +23,7 @@
   },
 
   "frameworks": {
+    "net451": {},
     "netstandard1.3": {
       "imports": [
         "portable-net451"

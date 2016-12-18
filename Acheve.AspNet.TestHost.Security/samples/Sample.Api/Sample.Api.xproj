@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>98181c15-3c3b-432f-afbd-51c34de88747</ProjectGuid>
-    <RootNamespace>Acheve.AspNetCore.TestHost.Security</RootNamespace>
+    <ProjectGuid>6b6bc8f3-e17e-40e7-9a9c-0ecae05839c2</ProjectGuid>
+    <RootNamespace>Sample.Api</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
