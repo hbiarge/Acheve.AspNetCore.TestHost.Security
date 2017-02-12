@@ -8,7 +8,6 @@ namespace Sample.Api
         public static void ConfigureCoreMvc(IMvcCoreBuilder builder)
         {
             builder.AddAuthorization();
-            builder.AddDataAnnotations();
             builder.AddJsonFormatters(options =>
             {
                 options.NullValueHandling = NullValueHandling.Ignore;
