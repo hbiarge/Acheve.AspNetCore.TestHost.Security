@@ -5,6 +5,7 @@
     <VersionPrefix>1.1.1</VersionPrefix>
     <Authors>Hugo Biarge</Authors>
     <TargetFramework>netstandard1.6</TargetFramework>
+    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
     <PackageProjectUrl>https://github.com/hbiarge/Acheve.AspNetCore.TestHost.Security</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/hbiarge/Acheve.AspNetCore.TestHost.Security/blob/master/LICENSE.txt</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
@@ -16,7 +17,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NETStandard.Library" Version="1.6.1" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="1.1.0" />
   </ItemGroup>
