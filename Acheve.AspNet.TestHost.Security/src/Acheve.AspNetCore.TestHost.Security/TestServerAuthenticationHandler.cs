@@ -29,7 +29,13 @@ namespace Acheve.AspNetCore.TestHost.Security
                 return Task.FromResult(AuthenticateResult.Fail("Authorization header not valid"));
             }
 
-            var headerClaims = DefautClaimsEncoder.Decode(authHeader.Parameter);
+            var headerClaims = DefautClaimsEncoder.Decode(authHeader.Parameter).ToArray();
+
+            if (headerClaims.Length == 0)
+            {
+                return Task.FromResult(AuthenticateResult.Fail("Authorization header with no claims"));
+            }
+
             var identity = new ClaimsIdentity(
                 claims: Options.CommonClaims.Union(headerClaims),
                 authenticationType: Options.AuthenticationScheme,

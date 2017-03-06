@@ -10,5 +10,7 @@ namespace Sample.IntegrationTests
             new Claim(ClaimTypes.NameIdentifier, "1"),
             new Claim(ClaimTypes.Name, "User"),
         };
+
+        public static readonly IEnumerable<Claim> Empty = new Claim[0];
     }
 }

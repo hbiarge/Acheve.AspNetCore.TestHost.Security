@@ -16,8 +16,14 @@ namespace Acheve.AspNetCore.TestHost.Security
 
         public static IEnumerable<Claim> Decode(string encodedValue)
         {
+            if (string.IsNullOrEmpty(encodedValue))
+            {
+                return Enumerable.Empty<Claim>();
+            }
+
             var decodedString = Encoding.UTF8.GetString(Convert.FromBase64String(encodedValue));
             return decodedString.Split(new[] { "&" }, StringSplitOptions.RemoveEmptyEntries)
+                .DefaultIfEmpty()
                 .Select(x =>
                 {
                     var values = x.Split(new[] { "=" }, StringSplitOptions.RemoveEmptyEntries);

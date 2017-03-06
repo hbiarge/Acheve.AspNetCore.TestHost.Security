@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Sample.Api.Controllers
 {
     [Route("api/values")]
-    public class ValuesController: ControllerBase
+    public class ValuesController : ControllerBase
     {
         [Authorize]
         [HttpGet]

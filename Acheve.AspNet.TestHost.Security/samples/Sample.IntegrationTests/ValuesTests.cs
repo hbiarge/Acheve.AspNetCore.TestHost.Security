@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Acheve.AspNetCore.TestHost.Security;
+using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Xunit;
@@ -43,6 +45,17 @@ namespace Sample.IntegrationTests
                 .GetAsync();
 
             response.EnsureSuccessStatusCode();
+        }
+
+        [Fact]
+        public async Task WithEmptyRequestBuilder()
+        {
+            // Or you can create a request and assign the identity to the RequestBuilder
+            var response = await _server.CreateRequest("api/values")
+                .WithIdentity(Identities.Empty)
+                .GetAsync();
+
+            response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
         }
 
         [Fact]
