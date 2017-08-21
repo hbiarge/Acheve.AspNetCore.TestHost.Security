@@ -2,14 +2,25 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.Extensions.Primitives;
 using System.Linq;
+using System.Text.Encodings.Web;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Acheve.AspNetCore.TestHost.Security
 {
     public class TestServerAuthenticationHandler : AuthenticationHandler<TestServerAuthenticationOptions>
     {
+        public TestServerAuthenticationHandler(
+            IOptionsMonitor<TestServerAuthenticationOptions> options,
+            ILoggerFactory logger,
+            UrlEncoder encoder,
+            ISystemClock clock)
+            : base(options, logger, encoder, clock)
+        {
+        }
+
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             StringValues authHeaderString;
@@ -38,14 +49,14 @@ namespace Acheve.AspNetCore.TestHost.Security
 
             var identity = new ClaimsIdentity(
                 claims: Options.CommonClaims.Union(headerClaims),
-                authenticationType: Options.AuthenticationScheme,
+                authenticationType: Scheme.Name,
                 nameType: Options.NameClaimType,
                 roleType: Options.RoleClaimType);
 
             var ticket = new AuthenticationTicket(
                 new ClaimsPrincipal(identity),
                 new AuthenticationProperties(),
-                Options.AuthenticationScheme);
+                Scheme.Name);
 
             return Task.FromResult(AuthenticateResult.Success(ticket));
         }

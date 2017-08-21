@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0F882837-34A3-45A6-B3C4-9EB39FD6298D}"
 EndProject
@@ -14,6 +14,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.IntegrationTests", "samples\Sample.IntegrationTests\Sample.IntegrationTests.csproj", "{1784343C-7015-49A6-B91D-EFC9311D31DD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acheve.AspNetCore.TestHost.Security", "src\Acheve.AspNetCore.TestHost.Security\Acheve.AspNetCore.TestHost.Security.csproj", "{98181C15-3C3B-432F-AFBD-51C34DE88747}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FE76E77D-5D87-43EF-B519-36D103E8A706}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,5 +87,8 @@ Global
 		{5B6F4627-E0AE-4148-ABE9-832E6DE4512C} = {AF9F0B5D-B8B2-4922-92A4-A345E9BF5C88}
 		{1784343C-7015-49A6-B91D-EFC9311D31DD} = {AF9F0B5D-B8B2-4922-92A4-A345E9BF5C88}
 		{98181C15-3C3B-432F-AFBD-51C34DE88747} = {0F882837-34A3-45A6-B3C4-9EB39FD6298D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38E84EEF-CE4A-4FAA-ACE0-3EAE05C24EE6}
 	EndGlobalSection
 EndGlobal
