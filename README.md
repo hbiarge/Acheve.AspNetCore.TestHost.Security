@@ -1,13 +1,10 @@
 # Acheve.AspNetCore.TestHost.Security
 NuGet package to manage authenticated requests in AspNetCore TestServer
 
-Unit testing your Mvc controllers is not enougth to verify the correctness of your WebApi. Are the filters working? The correct status code is sent 
-when that condition is reached? Is the user authorized to request that endpoint? 
+Unit testing your Mvc controllers is not enougth to verify the correctness of your WebApi. Are the filters working? The correct status code is sent when that condition is reached? Is the user authorized to request that endpoint? 
 
 
-The NuGet package [Microsoft.AspNetCore.TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost/) allows you to create an in memory owin server that
-exposes an HttpCient to be able to send request to the server. All in memory, all in the same process. Fast. It's the best way to 
-create integration test in your Mvc application.
+The NuGet package [Microsoft.AspNetCore.TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost/) allows you to create an in memory server that exposes an HttpClient to be able to send request to the server. All in memory, all in the same process. Fast. It's the best way to create integration test in your Mvc application.
 
 But when your Mvc application requires authenticated request it could be a little more dificult...
 
@@ -16,13 +13,26 @@ What if you have an easy way to indicate the claims in the request?
 This package implements an authentication middleware and several extension methods to easiy indicate
 the claims for authenticated calls to the WebApi.
 
-In the TestServer startup class you shoud incude the authentication middleware:
+In the TestServer startup class you shoud incude the authentication service and add the .Net Core new AUthentication middleware:
 
-    public class Startup
+     public class TestStartup
     {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = TestServerAuthenticationDefaults.AuthenticationScheme;
+                })
+                .AddTestServerAuthentication();
+
+            var mvcCoreBuilder = services.AddMvcCore();
+            ApiConfiguration.ConfigureCoreMvc(mvcCoreBuilder);
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            app.UseTestServerAuthentication();
+            app.UseAuthentication();
 
             app.UseMvcWithDefaultRoute();
         }
@@ -84,7 +94,17 @@ the request with the server RequestBuilder and with the specified claims:
         }
     }
 
-Both methods (`WithDefaultIdentity` and `WithIdentity`) accept as the ony parameter an IEnumerabe&lt;Claim&gt; that should include the
-desired user claims in the request.
+Both methods (`WithDefaultIdentity` and `WithIdentity`) accept as the only parameter an IEnumerabe&lt;Claim&gt; that should include the desired user claims in the request.
+
+    public static class Identities
+    {
+        public static readonly IEnumerable<Claim> User = new[]
+        {
+            new Claim(ClaimTypes.NameIdentifier, "1"),
+            new Claim(ClaimTypes.Name, "User"),
+        };
+
+        public static readonly IEnumerable<Claim> Empty = new Claim[0];
+    }
 
 You can find a complete example in the [samples](https://github.com/hbiarge/Acheve.AspNetCore.TestHost.Security/tree/master/Acheve.AspNet.TestHost.Security/samples) directory.
